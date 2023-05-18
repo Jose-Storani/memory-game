@@ -61,6 +61,7 @@ body{
     background-color: black;
     width: 125px;
     height: 175px;
+
 }
 
 .card-face{
@@ -71,12 +72,52 @@ body{
     justify-content: center;
     align-items: center;
     overflow: hidden;
+    backface-visibility: hidden;
+    border-radius:12px ;
+    border-width: 1px;
+    border-style: solid;
+    
+}
+
+.card.visible .card-back{
+    transform:rotateY(-180deg)
+
+}
+
+.card.visible .card-front{
+    transform: rotateY(0);
+}
+
+.card-back{
+    background-color: black;
+    border-color: #FF6D00;
+}
+
+.card-front{
+    transform: rotateY(180deg);
+    background-color: #FFBB89;
+    border-color: #333;
+}
+
+.card-value{
+    transform: scale(.9);
+    transition: transform 100ms ease-in-out
+}
+
+.card-front:hover .card-value{
+    transform: scale(1);
 }
 
 .web{
     position: absolute;
     width: 47px;
     height: 47px;
+    transition: width 100ms ease-in-out, height 100ms ease-in-out ;
+}
+
+.card-face:hover .web{
+    width: 52px;
+    height: 52px;
 }
 
 .web-top-left{
@@ -106,5 +147,11 @@ body{
 .spider{
     align-self: flex-start;
     transform: translateY(-10px);
+    transition: transform 100ms ease-in-out
 
 }
+
+.card-back:hover .spider{
+    transform:translateY(0);
+}
+
