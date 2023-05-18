@@ -19,6 +19,7 @@ html{
     border: solid red 2px;
     min-height: 100vh;
     font-size: 16px;
+    cursor:url("../Assets/cursors/Ghost.cur"), auto;
 }
 
 body{
@@ -44,24 +45,29 @@ body{
     font-size: 4rem;
 }
 .game-container{
+    border: solid rgb(0, 200, 255) 2px;
     display: grid;
-    grid-template-columns: repeat(4, auto);
+    grid-template-columns: repeat(8, auto);
     gap: 10px;
-    justify-content: center;
+    justify-content: center
+    ;
 }
 
 .game-info-container{
     border: solid red 2px;
     grid-column: 1  / -1;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
 }
 .card{
-    position: relative;
-    background-color: black;
+    position: relative;   
     width: 125px;
     height: 175px;
 
+}
+
+.card:hover{
+    cursor:url("../Assets/cursors/GhostHover.cur"), auto;
 }
 
 .card-face{
@@ -76,6 +82,7 @@ body{
     border-radius:12px ;
     border-width: 1px;
     border-style: solid;
+    transition: transform 500ms ease-in-out;
     
 }
 
@@ -86,6 +93,59 @@ body{
 
 .card.visible .card-front{
     transform: rotateY(0);
+}
+
+.card.matched .card-value{
+    animation: dance 1s linear infinite 500ms;
+}
+
+.overlay-text{
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    color: #FF6D00;
+    font-family: Creepy,serif;
+
+}
+
+.overlay-text-small{
+    font-size: 2rem;
+    
+}
+.overlay-text.visible{
+    display: flex;
+    flex-direction: column;
+    animation:extender 500ms forwards ;
+}
+
+@keyframes extender {
+    from{
+        background-color: rgba(0,0,0,0);
+        font-size: 0;
+    }
+    to{
+        background-color: rgba(0,0,0,0.8);
+        font-size: 10rem;
+    }
+    
+}
+
+@keyframes dance {
+0%,100%{
+    transform: rotate0;
+}    
+25%{
+    transform: rotate(-30deg);
+}
+75%{
+    transform: rotate(30deg);
+}
 }
 
 .card-back{
@@ -155,3 +215,26 @@ body{
     transform:translateY(0);
 }
 
+
+@media (max-width:600px){
+    .game-container{
+        grid-template-columns: repeat(2,auto);
+    }
+
+    .game-info-container{
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media (min-width:601px){
+    .game-container{
+        grid-template-columns: repeat(4,auto);
+    }
+}
+
+@media(min-width:900px){
+    .game-container{
+        grid-template-columns: repeat(8,auto);
+    }
+}
