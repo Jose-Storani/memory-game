@@ -7,23 +7,23 @@
 
 @font-face {
     font-family: "Creepy";
-    src: url("/src/Assets/fonts/Creepy.woff") format("woff"), url("/src//Assets//fonts/Creepy.woff2") format("woff2")
+    src: url("/src/Assets/fonts/Creepy.woff") format("woff"), url("/src/Assets//fonts/Creepy.woff2") format("woff2")
 }
 
 @font-face {
     font-family: "Lunacy";
-    src: url("/src/Assets/fonts/Lunacy.woff") format("woff"), url("/src//Assets//fonts/Lunacy.woff2") format("woff2")
+    src: url("/src/Assets/fonts/Lunacy.woff") format("woff"), url("/src/Assets//fonts/Lunacy.woff2") format("woff2")
 }
 
 html{
-    border: solid red 2px;
+    
     min-height: 100vh;
     font-size: 16px;
     cursor:url("../Assets/cursors/Ghost.cur"), auto;
 }
 
 body{
-    border: solid green 2px;
+  
     background: radial-gradient(#9d5900,#3d2200);
    
 }
@@ -31,7 +31,7 @@ body{
 
 .title{
     margin-top: 2rem;
-    border: solid blue 2px;
+    
     color:#FF6D00;
     font-family: Creepy, serif;
     font-weight: normal;
@@ -45,7 +45,7 @@ body{
     font-size: 4rem;
 }
 .game-container{
-    border: solid rgb(0, 200, 255) 2px;
+  
     display: grid;
     grid-template-columns: repeat(8, auto);
     gap: 10px;
@@ -54,7 +54,7 @@ body{
 }
 
 .game-info-container{
-    border: solid red 2px;
+    
     grid-column: 1  / -1;
     display: flex;
     justify-content: space-evenly;
