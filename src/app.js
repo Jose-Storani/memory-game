@@ -1,11 +1,11 @@
-const overlayText = document.querySelector(".overlay-text")
+const overlayText = document.querySelector(".overlay-text");
+const gameOverLay = document.getElementById("gameover-text");
+const restartButton = document.querySelector(".overlay-text-small")
 overlayText.addEventListener("click",()=>{
     overlayText.classList.remove("visible");
     gameStart()
 
 })
-
-  
 
 
 const gameStart = () => {
@@ -27,8 +27,17 @@ function gameOver(time,intervalID){
     if(time <= 0){
         clearInterval(intervalID)
         setTimeout(() => {
-            alert("Game Over");
+            gameOverLay.classList.add("visible");
           }, 0);
     }
 }
 
+function restart(){
+    gameOverLay.classList.remove("visible");
+    gameStart()
+}
+
+
+restartButton.addEventListener("click",()=>{
+    restart()
+})

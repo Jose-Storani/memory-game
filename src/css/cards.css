@@ -116,7 +116,11 @@ body{
 
 .overlay-text-small{
     font-size: 2rem;
+    border: solid red 2px;
     
+}
+.overlay-text-small:hover{
+    border: solid green 2px;
 }
 .overlay-text.visible{
     display: flex;
