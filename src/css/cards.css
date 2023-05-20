@@ -116,12 +116,10 @@ body{
 
 .overlay-text-small{
     font-size: 2rem;
-    border: solid red 2px;
+    
     
 }
-.overlay-text-small:hover{
-    border: solid green 2px;
-}
+
 .overlay-text.visible{
     display: flex;
     flex-direction: column;
@@ -161,11 +159,13 @@ body{
     transform: rotateY(180deg);
     background-color: #FFBB89;
     border-color: #333;
+    
 }
 
 .card-value{
     transform: scale(.9);
-    transition: transform 100ms ease-in-out
+    transition: transform 100ms ease-in-out;
+    /* animation: dance 1s infinite 500ms forwards ; */
 }
 
 .card-front:hover .card-value{
