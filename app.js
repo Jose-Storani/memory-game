@@ -1,6 +1,7 @@
 const overlayText = document.querySelector(".overlay-text");
 const gameOverLay = document.getElementById("gameover-text");
-const restartButton = document.querySelector(".overlay-text-small")
+const victoryLay = document.getElementById("victory-text")
+const restartButton = document.querySelectorAll(".overlay-text-small")
 const timeRemaining = document.getElementById("time-remaining");
 const allCards = document.querySelectorAll(".card");
 const cardsArray = Array.from(allCards)
@@ -24,10 +25,7 @@ overlayText.addEventListener("click", () => {
 
 })
 
-restartButton.addEventListener("click", () => {
-    setGame()
-    restart()
-})
+
 
 
 

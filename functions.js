@@ -1,6 +1,7 @@
 let firstCardRevealed = null;
 let revealedCards = [];
-const GAME_DURATION = 99
+let correctRevealedCards = [];
+const GAME_DURATION = 99;
 let flips = 0;
 
 const gameStart = () => {
@@ -15,6 +16,10 @@ const gameStart = () => {
 };
 
 function gameOver(time, intervalID) {
+    if(correctRevealedCards.length === 16){
+        clearInterval(intervalID);
+        addVisibility(victoryLay)
+    }
     if (time <= 0) {
         clearInterval(intervalID);
         setTimeout(() => {
@@ -58,6 +63,8 @@ function checkCardValue(element) {
     } else {
         if (firstCardRevealed === cardValue) {
             clickState("enable");
+            correctRevealedCards.splice(correctRevealedCards.length,0,firstCardRevealed,cardValue)
+            console.log(correctRevealedCards)
             revealedCards = [];
         } else {
             setTimeout(() => {
@@ -73,8 +80,8 @@ function checkCardValue(element) {
     }
 }
 
-function restart() {
-    removeVisibility(gameOverLay);
+function restart(lay) {
+    removeVisibility(lay);
     timeRemaining.innerText = 100;
     flipAllCards();
     gameStart();
