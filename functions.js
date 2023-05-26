@@ -19,7 +19,8 @@ const gameStart = () => {
         gameOver(count, interval);
         count--;
     }, 1000);
-    backgroundMusic.play();
+    backgroundMusic.play()
+    
     showCard();
     
 };
@@ -29,6 +30,7 @@ function gameOver(time, intervalID) {
         clearInterval(intervalID);
         addVisibility(victoryLay);
         victorySound.play()
+        
     }
     if (time <= 0) {
         clearInterval(intervalID);
@@ -49,10 +51,10 @@ function removeVisibility(element) {
 function showCard() {
     cardsArray.forEach((card) => {
         card.addEventListener("click", () => {
-            flipSound.play()
             addVisibility(card);
             checkCardValue(card);
-            addFlip();
+            
+            
         });
     });
 }
@@ -63,6 +65,9 @@ function addFlip() {
 }
 
 function checkCardValue(element) {
+    flipSound.play()
+    addFlip()
+    element.style.pointerEvents = "none"
     revealedCards.push(element);
     if (revealedCards.length === 2) {
         clickState();
@@ -75,8 +80,8 @@ function checkCardValue(element) {
     } else {
         if (firstCardRevealed === cardValue) {
             clickState("enable");
-            matchCardSound.play()
-            correctRevealedCards.splice(correctRevealedCards.length,0,firstCardRevealed,cardValue)
+            correctRevealedCards.splice(correctRevealedCards.length,0,firstCardRevealed,cardValue);
+            matchCardSound.play();
             revealedCards = [];
         } else {
             setTimeout(() => {
