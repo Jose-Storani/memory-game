@@ -1,3 +1,18 @@
+
+//values from DOM
+const startButton = document.querySelector(".overlay-text");
+const gameOverLay = document.getElementById("gameover-text");
+const victoryLay = document.getElementById("victory-text")
+const restartButton = document.querySelectorAll(".overlay-text-small")
+const timeRemaining = document.getElementById("time-remaining");
+const cardsArray = Array.from(document.querySelectorAll(".card"))
+const cardsValues = Array.from(document.querySelectorAll(".card-value")).map((value)=>{ 
+    return value.getAttribute("src")
+})
+const flipCount = document.getElementById("flips")
+
+
+//values for functions
 let firstCardRevealed = null;
 let revealedCards = [];
 let correctRevealedCards = [];
@@ -12,6 +27,14 @@ const victorySound = new Audio("./Assets/audios/Assets_Audio_victory.wav")
 backgroundMusic.loop = true;
 
 
+startButton.addEventListener("click", () => {
+    gameStart()
+    removeVisibility(startButton);
+    setGame();
+})
+
+
+
 const gameStart = () => {
     let count = GAME_DURATION;
     const interval = setInterval(() => {
@@ -24,6 +47,15 @@ const gameStart = () => {
     showCard();
     
 };
+
+function setGame() {
+    const shuffledCards = shuffleCards(cardsValues);
+    cardsArray.forEach((card, index) => {
+        const imgCard = card.querySelector(".card-front .card-value");
+        imgCard.setAttribute("src", shuffledCards[index]);
+    });
+}
+
 
 function gameOver(time, intervalID) {
     if(correctRevealedCards.length === 16){
@@ -137,12 +169,5 @@ function shuffleCards(array) {
     return array;
 }
 
-function setGame() {
-    const shuffledCards = shuffleCards(imgValueArray);
-    cardsArray.forEach((card, index) => {
-        const imgCard = card.querySelector(".card-front .card-value");
-        imgCard.setAttribute("src", shuffledCards[index]);
-    });
-}
 
 
