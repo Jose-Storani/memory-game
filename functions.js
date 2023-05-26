@@ -3,6 +3,14 @@ let revealedCards = [];
 let correctRevealedCards = [];
 const GAME_DURATION = 99;
 let flips = 0;
+const backgroundMusic = new Audio("./Assets/audios/Assets_Audio_creepy.mp3");
+backgroundMusic.volume = 0.5
+const flipSound = new Audio("./Assets/audios/Assets_Audio_flip.wav");
+const gameOverSound = new Audio("./Assets/audios/Assets_Audio_gameOver.wav");
+const matchCardSound = new Audio("./Assets/audios/Assets_Audio_match.wav")
+const victorySound = new Audio("./Assets/audios/Assets_Audio_victory.wav")
+backgroundMusic.loop = true;
+
 
 const gameStart = () => {
     let count = GAME_DURATION;
@@ -11,6 +19,7 @@ const gameStart = () => {
         gameOver(count, interval);
         count--;
     }, 1000);
+    backgroundMusic.play();
     showCard();
     
 };
@@ -18,10 +27,12 @@ const gameStart = () => {
 function gameOver(time, intervalID) {
     if(correctRevealedCards.length === 16){
         clearInterval(intervalID);
-        addVisibility(victoryLay)
+        addVisibility(victoryLay);
+        victorySound.play()
     }
     if (time <= 0) {
         clearInterval(intervalID);
+        gameOverSound.play()
         setTimeout(() => {
             addVisibility(gameOverLay);
         }, 0);
@@ -38,6 +49,7 @@ function removeVisibility(element) {
 function showCard() {
     cardsArray.forEach((card) => {
         card.addEventListener("click", () => {
+            flipSound.play()
             addVisibility(card);
             checkCardValue(card);
             addFlip();
@@ -63,8 +75,8 @@ function checkCardValue(element) {
     } else {
         if (firstCardRevealed === cardValue) {
             clickState("enable");
+            matchCardSound.play()
             correctRevealedCards.splice(correctRevealedCards.length,0,firstCardRevealed,cardValue)
-            console.log(correctRevealedCards)
             revealedCards = [];
         } else {
             setTimeout(() => {
@@ -127,3 +139,5 @@ function setGame() {
         imgCard.setAttribute("src", shuffledCards[index]);
     });
 }
+
+
