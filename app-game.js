@@ -132,6 +132,7 @@ function checkCardValue(element) {
 function restart(lay) {
     removeVisibility(lay);
     timeRemaining.innerText = 100;
+    correctRevealedCards = [];
     flipAllCards();
     gameStart();
 }
