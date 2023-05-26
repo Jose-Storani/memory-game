@@ -7,24 +7,23 @@
 
 @font-face {
     font-family: "Creepy";
-    src: url("/src/Assets/fonts/Creepy.woff") format("woff"), url("/src/Assets//fonts/Creepy.woff2") format("woff2")
+    src: url("/Assets/fonts/Creepy.woff") format("woff"), url("/Assets//fonts/Creepy.woff2") format("woff2")
 }
 
 @font-face {
     font-family: "Lunacy";
-    src: url("/src/Assets/fonts/Lunacy.woff") format("woff"), url("/src/Assets//fonts/Lunacy.woff2") format("woff2")
+    src: url("/Assets/fonts/Lunacy.woff") format("woff"), url("/Assets//fonts/Lunacy.woff2") format("woff2")
 }
 
 html{
     
     min-height: 100vh;
     font-size: 16px;
-    cursor:url("../Assets/cursors/Ghost.cur"), auto;
+    cursor:url("./Assets/cursors/Ghost.cur"), auto;
 }
 
 body{
-  
-    background: radial-gradient(#9d5900,#3d2200);
+    background: radial-gradient(#8a4f01,#3d2200);
    
 }
 
@@ -67,7 +66,7 @@ body{
 }
 
 .card:hover{
-    cursor:url("../Assets/cursors/GhostHover.cur"), auto;
+    cursor:url("./Assets/cursors/GhostHover.cur"), auto;
 }
 
 .card-face{
